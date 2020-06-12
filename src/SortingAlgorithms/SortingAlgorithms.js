@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import "./SortingAlgorithms.css";
-import { getMergeSortAnimations } from "../Algorithms/MergeSort";
-import { getQuickSortAnimationsLomuto } from "../Algorithms/QuickSortLomuto";
-import { getQuickSortAnimationsHoare } from "../Algorithms/QuickSortHoare";
-import { getBubbleSortAnimations } from "../Algorithms/BubbleSort";
-import { getHeapSortAnimations } from "../Algorithms/HeapSort";
-import { getSelectionSortAnimations } from "../Algorithms/SelectionSort";
-import { getInsertionSortAnimations } from "../Algorithms/InsertionSort";
-import { getGnomeSortAnimations } from "../Algorithms/GnomeSort";
+import React, { Component } from 'react';
+import './SortingAlgorithms.css';
+import { getMergeSortAnimations } from '../Algorithms/MergeSort';
+import { getQuickSortAnimationsLomuto } from '../Algorithms/QuickSortLomuto';
+import { getQuickSortAnimationsHoare } from '../Algorithms/QuickSortHoare';
+import { getBubbleSortAnimations } from '../Algorithms/BubbleSort';
+import { getHeapSortAnimations } from '../Algorithms/HeapSort';
+import { getSelectionSortAnimations } from '../Algorithms/SelectionSort';
+import { getInsertionSortAnimations } from '../Algorithms/InsertionSort';
+import { getGnomeSortAnimations } from '../Algorithms/GnomeSort';
 
 //Audio
 // let audioCtx = new AudioContext();
@@ -21,26 +21,26 @@ let SORT_SPEED_MS = 1;
 // let NUMBER_OF_ARRAY_BARS = 300;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = "#8bd8bd";
-let SECONDARY_COLOR = "#eb2188";
+const PRIMARY_COLOR = '#8bd8bd';
+let SECONDARY_COLOR = '#eb2188';
 
-const yellow = "#D6ED17FF";
-const pink = "#eb2188";
+const yellow = '#D6ED17FF';
+const pink = '#eb2188';
 // const purple = "#3c1a5b";
-const cyan = "#8bd8bd";
+const cyan = '#8bd8bd';
 
 let isRunning = false;
 
 let canVisualize = true;
 
 //Quick Sort Algorithm patterns
-let currentPattern = "Lomuto Pattern";
+let currentPattern = 'Lomuto Pattern';
 
 // // This is the color of array bars that are being compared throughout the animations.
 // const SECONDARY_COLOR = "#fff748";
 
 let isPattern = false; //Checks to see if there are more than one pattern for an algorithm
-let currentAlgo = "Merge Sort";
+let currentAlgo = 'Merge Sort';
 
 const heightShortener = 0.6;
 
@@ -78,47 +78,47 @@ export default class SortingVisualizer extends Component {
     else initialArrayLength = 300;
     this.state = {
       array: [],
-      quickSortPattern: "Lomuto",
+      quickSortPattern: 'Lomuto',
       minArrayBars: 5,
       maxArrayBars: initialArrayLength,
-      NUMBER_OF_ARRAY_BARS: initialArrayLength
+      NUMBER_OF_ARRAY_BARS: initialArrayLength,
     };
   }
 
   componentDidMount() {
     this.resetArray();
 
-    document.getElementById("Lomuto-btn").classList.toggle("current-pattern");
+    document.getElementById('Lomuto-btn').classList.toggle('current-pattern');
 
     if (isPattern) {
-      document.querySelector("#change-pattern-btn").style.display =
-        "inline-block";
+      document.querySelector('#change-pattern-btn').style.display =
+        'inline-block';
     } else {
-      document.querySelector("#change-pattern-btn").style.display = "none";
+      document.querySelector('#change-pattern-btn').style.display = 'none';
     }
 
     document.documentElement.style.setProperty(
-      "--view-port-width",
+      '--view-port-width',
       `${windowWidth / (this.state.NUMBER_OF_ARRAY_BARS * widthScaling)}px`
     );
 
-    document.getElementById("current-algorithm").innerHTML = currentAlgo;
+    document.getElementById('current-algorithm').innerHTML = currentAlgo;
 
     document.querySelector(
-      "#value"
+      '#value'
     ).innerHTML = this.state.NUMBER_OF_ARRAY_BARS;
-    document.querySelector("#value2").innerHTML = SORT_SPEED_MS;
+    document.querySelector('#value2').innerHTML = SORT_SPEED_MS;
   }
 
   resetArray() {
     canVisualize = true;
-    document.querySelector(".vis-btn").style.opacity = 1;
+    document.querySelector('.vis-btn').style.opacity = 1;
     const array = [];
     for (let i = 0; i < this.state.NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(5, 730));
     }
 
-    const arrayBars = document.querySelectorAll(".array-bar");
+    const arrayBars = document.querySelectorAll('.array-bar');
     for (let x = 0; x < arrayBars.length; x++) {
       arrayBars[x].style.backgroundColor = cyan;
     }
@@ -128,12 +128,12 @@ export default class SortingVisualizer extends Component {
     else widthScaling = 3;
 
     document.documentElement.style.setProperty(
-      "--view-port-width",
+      '--view-port-width',
       `${windowWidth / (this.state.NUMBER_OF_ARRAY_BARS * widthScaling)}px`
     );
 
     document.documentElement.style.setProperty(
-      "--array-bar-color",
+      '--array-bar-color',
       PRIMARY_COLOR
     );
   }
@@ -150,15 +150,15 @@ export default class SortingVisualizer extends Component {
     // Decrease the opacity of all the interactables
     isRunning = true;
     // const sliders = document.querySelectorAll(".slider");
-    const buttons = document.querySelectorAll(".btn");
-    const toggleButtons = document.querySelectorAll(".toggle-btn");
+    const buttons = document.querySelectorAll('.btn');
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
 
-    document.querySelector("#change-pattern-btn").style.opacity = 0.5;
-    document.querySelector(".drop-down-container").style.opacity = 0.5;
-    document.getElementById("array-num-slider").disabled = true;
-    document.getElementById("speed-slider").disabled = true;
-    document.getElementById("array-num-slider").style.opacity = 0.5;
-    document.getElementById("speed-slider").style.opacity = 0.5;
+    document.querySelector('#change-pattern-btn').style.opacity = 0.5;
+    document.querySelector('.drop-down-container').style.opacity = 0.5;
+    document.getElementById('array-num-slider').disabled = true;
+    document.getElementById('speed-slider').disabled = true;
+    document.getElementById('array-num-slider').style.opacity = 0.5;
+    document.getElementById('speed-slider').style.opacity = 0.5;
 
     for (let i = 0; i < toggleButtons.length; i++)
       toggleButtons[i].style.opacity = 0.5;
@@ -171,15 +171,17 @@ export default class SortingVisualizer extends Component {
     isRunning = false;
 
     // const sliders = document.querySelectorAll(".slider");
-    const buttons = document.querySelectorAll(".btn");
-    const toggleButtons = document.querySelectorAll(".toggle-btn");
+    const buttons = document.querySelectorAll('.btn');
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
 
-    document.querySelector("#change-pattern-btn").style.opacity = 1;
-    document.querySelector(".drop-down-container").style.opacity = 1;
-    document.getElementById("array-num-slider").disabled = false;
-    document.getElementById("speed-slider").disabled = false;
-    document.getElementById("array-num-slider").style.opacity = 1;
-    document.getElementById("speed-slider").style.opacity = 1;
+    document.querySelector('#change-pattern-btn').style.opacity = 1;
+    document.querySelector('.drop-down-container').style.opacity = 1;
+    document.getElementById('array-num-slider').disabled = false;
+    if (isToggled) {
+      document.getElementById('speed-slider').disabled = false;
+      document.getElementById('speed-slider').style.opacity = 1;
+    }
+    document.getElementById('array-num-slider').style.opacity = 1;
 
     for (let i = 0; i < buttons.length; i++) buttons[i].style.opacity = 1;
     for (let i = 0; i < toggleButtons.length; i++)
@@ -198,28 +200,28 @@ export default class SortingVisualizer extends Component {
   }
 
   whichAlgorithm(algo) {
-    if (algo === "Merge Sort") {
+    if (algo === 'Merge Sort') {
       this.mergeSort();
-    } else if (algo === "Quick Sort") {
+    } else if (algo === 'Quick Sort') {
       this.quickSort();
-    } else if (algo === "Heap Sort") {
+    } else if (algo === 'Heap Sort') {
       this.heapSort();
-    } else if (algo === "Bubble Sort") {
+    } else if (algo === 'Bubble Sort') {
       this.bubbleSort();
-    } else if (algo === "Selection Sort") {
+    } else if (algo === 'Selection Sort') {
       this.selectionSort();
-    } else if (algo === "Insertion Sort") {
+    } else if (algo === 'Insertion Sort') {
       this.insertionSort();
-    } else if (algo === "Gnome Sort") {
+    } else if (algo === 'Gnome Sort') {
       this.gnomeSort();
-    } else alert("That is not an avaiable algorithm");
+    } else alert('That is not an avaiable algorithm');
   }
 
   mergeSort() {
     let timer = 0;
     this.started(true);
     const animations = getMergeSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -264,14 +266,14 @@ export default class SortingVisualizer extends Component {
 
   quickSort() {
     let whichPattern;
-    if (currentPattern === "Lomuto Pattern")
+    if (currentPattern === 'Lomuto Pattern')
       whichPattern = getQuickSortAnimationsLomuto(this.state.array);
-    else if (currentPattern === "Hoare Pattern")
+    else if (currentPattern === 'Hoare Pattern')
       whichPattern = getQuickSortAnimationsHoare(this.state.array);
     let timer = 0;
     this.started(true);
     const animations = whichPattern;
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -312,7 +314,7 @@ export default class SortingVisualizer extends Component {
     let timer = 0;
     this.started(true);
     const animations = getHeapSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -359,7 +361,7 @@ export default class SortingVisualizer extends Component {
     let timer = 0;
     this.started(true);
     const animations = getSelectionSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -406,7 +408,7 @@ export default class SortingVisualizer extends Component {
     let timer = 0;
     this.started(true);
     const animations = getInsertionSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -453,7 +455,7 @@ export default class SortingVisualizer extends Component {
     let timer = 0;
     this.started(true);
     const animations = getBubbleSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -494,7 +496,7 @@ export default class SortingVisualizer extends Component {
     let timer = 0;
     this.started(true);
     const animations = getGnomeSortAnimations(this.state.array);
-    const arrayBars = document.getElementsByClassName("array-bar");
+    const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < animations.length; i++) {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
@@ -662,8 +664,8 @@ export default class SortingVisualizer extends Component {
               className="drop-down-container"
               onClick={() => {
                 if (isRunning === false) {
-                  const items = document.querySelector(".drop-down");
-                  items.classList.toggle("active");
+                  const items = document.querySelector('.drop-down');
+                  items.classList.toggle('active');
                 }
               }}
             >
@@ -672,45 +674,45 @@ export default class SortingVisualizer extends Component {
               <ul className="drop-down">
                 <li
                   onClick={() => {
-                    currentAlgo = "Merge Sort";
+                    currentAlgo = 'Merge Sort';
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
                     isPattern = false;
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "none";
+                      '#change-pattern-btn'
+                    ).style.display = 'none';
                   }}
                 >
                   Merge Sort
                 </li>
                 <li
                   onClick={() => {
-                    currentAlgo = "Quick Sort";
+                    currentAlgo = 'Quick Sort';
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
                     isPattern = true;
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "inline-block";
+                      '#change-pattern-btn'
+                    ).style.display = 'inline-block';
                   }}
                 >
                   Quick Sort
                 </li>
                 <li
                   onClick={() => {
-                    currentAlgo = "Bubble Sort";
+                    currentAlgo = 'Bubble Sort';
 
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
 
                     isPattern = false;
 
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "none";
+                      '#change-pattern-btn'
+                    ).style.display = 'none';
                   }}
                 >
                   Bubble Sort
@@ -734,42 +736,42 @@ export default class SortingVisualizer extends Component {
                 </li> */}
                 <li
                   onClick={() => {
-                    currentAlgo = "Gnome Sort";
+                    currentAlgo = 'Gnome Sort';
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
                     isPattern = false;
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "none";
+                      '#change-pattern-btn'
+                    ).style.display = 'none';
                   }}
                 >
                   Gnome Sort
                 </li>
                 <li
                   onClick={() => {
-                    currentAlgo = "Selection Sort";
+                    currentAlgo = 'Selection Sort';
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
                     isPattern = false;
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "none";
+                      '#change-pattern-btn'
+                    ).style.display = 'none';
                   }}
                 >
                   Selection Sort
                 </li>
                 <li
                   onClick={() => {
-                    currentAlgo = "Insertion Sort";
+                    currentAlgo = 'Insertion Sort';
                     document.querySelector(
-                      "#current-algorithm"
+                      '#current-algorithm'
                     ).innerHTML = currentAlgo;
                     isPattern = false;
                     document.querySelector(
-                      "#change-pattern-btn"
-                    ).style.display = "none";
+                      '#change-pattern-btn'
+                    ).style.display = 'none';
                   }}
                 >
                   Insertion Sort
@@ -783,7 +785,7 @@ export default class SortingVisualizer extends Component {
                 className="vis-btn"
                 onClick={() => {
                   if (isRunning === false && canVisualize === true) {
-                    document.querySelector(".vis-btn").style.opacity = 0.5;
+                    document.querySelector('.vis-btn').style.opacity = 0.5;
                     canVisualize = false;
                     this.whichAlgorithm(currentAlgo);
                   } else if (isRunning === true) {
@@ -816,20 +818,19 @@ export default class SortingVisualizer extends Component {
                     if (isRunning) {
                     } else {
                       const slider = document.querySelector(
-                        "#array-num-slider"
+                        '#array-num-slider'
                       );
-                      const value = document.querySelector("#value");
+                      const value = document.querySelector('#value');
                       var x = slider.value;
                       value.innerHTML = x;
-                      const currentValue = document.querySelector("#value");
-                      console.log(currentValue.innerHTML);
+                      const currentValue = document.querySelector('#value');
 
                       var color =
-                        "linear-gradient(90deg, #fff748" +
+                        'linear-gradient(90deg, #fff748' +
                         x +
-                        "%, rgb(214, 214, 214)" +
+                        '%, rgb(214, 214, 214)' +
                         x +
-                        "%)";
+                        '%)';
                       slider.style.background = color;
                       // this.state.NUMBER_OF_ARRAY_BARS = x;
                       // this.resetArray();
@@ -841,8 +842,8 @@ export default class SortingVisualizer extends Component {
                       // );
 
                       this.setState(
-                        prevState => ({
-                          NUMBER_OF_ARRAY_BARS: (prevState.NUMBER_OF_ARRAY_BARS = currentValue.innerHTML.toString())
+                        (prevState) => ({
+                          NUMBER_OF_ARRAY_BARS: (prevState.NUMBER_OF_ARRAY_BARS = currentValue.innerHTML.toString()),
                         }),
                         this.resetArray
                       );
@@ -877,8 +878,8 @@ export default class SortingVisualizer extends Component {
                   onChange={() => {
                     if (isRunning) {
                     } else {
-                      const slider = document.querySelector("#speed-slider");
-                      const value2 = document.querySelector("#value2");
+                      const slider = document.querySelector('#speed-slider');
+                      const value2 = document.querySelector('#value2');
                       var x = slider.value;
                       value2.innerHTML = x;
                       SORT_SPEED_MS = x;
@@ -892,20 +893,20 @@ export default class SortingVisualizer extends Component {
                 className="toggle-btn"
                 id="ultra-slow"
                 onClick={() => {
-                  const toggleButton = document.querySelector(".toggle-btn");
+                  const toggleButton = document.querySelector('.toggle-btn');
                   if (isRunning === false) {
                     if (isToggled) {
-                      document.getElementById("speed-slider").disabled = true;
+                      document.getElementById('speed-slider').disabled = true;
                       document.getElementById(
-                        "speed-slider"
+                        'speed-slider'
                       ).style.opacity = 0.5;
-                      toggleButton.classList.toggle("toggleOn");
+                      toggleButton.classList.toggle('toggleOn');
                       SORT_SPEED_MS = 1000;
                       isToggled = false;
                     } else {
-                      document.getElementById("speed-slider").disabled = false;
-                      document.getElementById("speed-slider").style.opacity = 1;
-                      toggleButton.classList.toggle("toggleOn");
+                      document.getElementById('speed-slider').disabled = false;
+                      document.getElementById('speed-slider').style.opacity = 1;
+                      toggleButton.classList.toggle('toggleOn');
                       SORT_SPEED_MS = 1;
                       isToggled = true;
                     }
@@ -922,9 +923,9 @@ export default class SortingVisualizer extends Component {
               onClick={() => {
                 if (isPattern === true && isRunning === false) {
                   const changePatternBtn = document.querySelector(
-                    ".drop-down-2"
+                    '.drop-down-2'
                   );
-                  changePatternBtn.classList.toggle("active");
+                  changePatternBtn.classList.toggle('active');
                 } else {
                 }
               }}
@@ -935,13 +936,13 @@ export default class SortingVisualizer extends Component {
                 <li
                   id="Lomuto-btn"
                   onClick={() => {
-                    if (currentPattern !== "Lomuto Pattern") {
-                      currentPattern = "Lomuto Pattern";
+                    if (currentPattern !== 'Lomuto Pattern') {
+                      currentPattern = 'Lomuto Pattern';
 
-                      const Lomuto_btn = document.getElementById("Lomuto-btn");
-                      const Hoare_btn = document.getElementById("Hoare-btn");
-                      Hoare_btn.classList.toggle("current-pattern");
-                      Lomuto_btn.classList.toggle("current-pattern");
+                      const Lomuto_btn = document.getElementById('Lomuto-btn');
+                      const Hoare_btn = document.getElementById('Hoare-btn');
+                      Hoare_btn.classList.toggle('current-pattern');
+                      Lomuto_btn.classList.toggle('current-pattern');
                     } else {
                     }
                   }}
@@ -951,13 +952,13 @@ export default class SortingVisualizer extends Component {
                 <li
                   id="Hoare-btn"
                   onClick={() => {
-                    if (currentPattern !== "Hoare Pattern") {
-                      currentPattern = "Hoare Pattern";
+                    if (currentPattern !== 'Hoare Pattern') {
+                      currentPattern = 'Hoare Pattern';
 
-                      const Hoare_btn = document.getElementById("Hoare-btn");
-                      const Lomuto_btn = document.getElementById("Lomuto-btn");
-                      Lomuto_btn.classList.toggle("current-pattern");
-                      Hoare_btn.classList.toggle("current-pattern");
+                      const Hoare_btn = document.getElementById('Hoare-btn');
+                      const Lomuto_btn = document.getElementById('Lomuto-btn');
+                      Lomuto_btn.classList.toggle('current-pattern');
+                      Hoare_btn.classList.toggle('current-pattern');
                     } else {
                     }
                   }}
